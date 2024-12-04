@@ -148,7 +148,6 @@ body.light-mode #input-passages {
   color: #fff;
   border: none;
   border-radius: 4px;
-  margin-top: 10px;
 }
 
 #load-passages:hover {
@@ -165,12 +164,8 @@ body.light-mode #input-passages {
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 10px 0px;
   color: #e0e0e0;
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 10;
   transition: color 0.3s;
 }
 
@@ -180,4 +175,10 @@ body.light-mode #input-passages {
 
 #theme-toggle:hover {
   color: #52d273;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

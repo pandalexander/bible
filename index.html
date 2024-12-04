@@ -8,14 +8,14 @@
   </head>
   <body>
     <div id="app">
-      <!-- Dark/Light Mode Toggle -->
-      <button id="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
-
       <textarea
         id="input-passages"
         placeholder="Enter passages like 'Exodus 10, Joshua 12'"
       ></textarea>
-      <button id="load-passages">Load Passages</button>
+      <div class="button-container">
+        <button id="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
+        <button id="load-passages">Load Passages</button>
+      </div>
       <div id="passages-container"></div>
     </div>
     <script src="script.js"></script>
