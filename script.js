@@ -31,3 +31,32 @@ document.getElementById("load-passages").addEventListener("click", async () => {
     }
   }
 });
+
+// JavaScript for Dark/Light Mode Toggle
+const themeToggleButton = document.getElementById("theme-toggle");
+const body = document.body;
+
+// Check if the user prefers light mode based on system settings
+if (
+  window.matchMedia &&
+  window.matchMedia("(prefers-color-scheme: light)").matches
+) {
+  body.classList.add("light-mode");
+  themeToggleButton.textContent = "🌙"; // Set button to moon (dark mode)
+} else {
+  body.classList.add("dark-mode");
+  themeToggleButton.textContent = "🌞"; // Set button to sun (light mode)
+}
+
+// Toggle light/dark mode when button is clicked
+themeToggleButton.addEventListener("click", () => {
+  body.classList.toggle("light-mode");
+  body.classList.toggle("dark-mode");
+
+  // Update button text based on the current theme
+  if (body.classList.contains("light-mode")) {
+    themeToggleButton.textContent = "🌙"; // Switch to moon
+  } else {
+    themeToggleButton.textContent = "🌞"; // Switch to sun
+  }
+});
