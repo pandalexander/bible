@@ -1,8 +1,15 @@
-const fetch = require("node-fetch");
+import fetch from "node-fetch";
 
-exports.handler = async (event) => {
-  const { passage } = event.queryStringParameters;
+export const handler = async (event) => {
+  const { passage } = event.queryStringParameters || {};
   const apiKey = process.env.ESV_API_KEY;
+
+  if (!passage) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: "Passage query parameter is required." }),
+    };
+  }
 
   try {
     const response = await fetch(
@@ -17,7 +24,9 @@ exports.handler = async (event) => {
     if (!response.ok) {
       return {
         statusCode: response.status,
-        body: `Error fetching passage: ${response.statusText}`,
+        body: JSON.stringify({
+          error: `Error from API: ${response.statusText}`,
+        }),
       };
     }
 
@@ -29,7 +38,7 @@ exports.handler = async (event) => {
   } catch (error) {
     return {
       statusCode: 500,
-      body: `Server Error: ${error.message}`,
+      body: JSON.stringify({ error: error.message }),
     };
   }
 };
